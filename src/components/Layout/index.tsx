@@ -6,8 +6,8 @@ type LayoutProps = {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box w="100vw" h="100vh" p="10px">
-      <Center>{children}</Center>
+    <Box w="100%" h="100vh">
+      <Center flexDirection="column">{children}</Center>
     </Box>
   );
 };
