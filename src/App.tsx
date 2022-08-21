@@ -23,7 +23,7 @@ export const App = () => {
 
   return (
     <Layout>
-      <SimpleGrid minChildWidth="200px" spacing="20px" w="80%" p="7">
+      <SimpleGrid minChildWidth="200px" spacing="30px" w="80%" p="7">
         {productList &&
           productList.data.nodes.map((item) => (
             <Product key={item.id} productOnList={item} />
