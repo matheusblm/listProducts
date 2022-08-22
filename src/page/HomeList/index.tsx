@@ -1,4 +1,4 @@
-import { Button, SimpleGrid, VStack } from "@chakra-ui/react";
+import { Button, Center, SimpleGrid, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { CategoriesBlock } from "../../components/CategoriesBlock";
 import { Layout } from "../../components/Layout";
@@ -27,7 +27,6 @@ export const HomeList = () => {
       !filterIsOn &&
       (!selectedCategories || selectedCategories.includes("todos"))
     ) {
-      setSelectedCategories([]);
       getData(setProductList);
     }
   }, [filterIsOn, selectedCategories]);
@@ -38,26 +37,28 @@ export const HomeList = () => {
         setFilterIsOn={setFilterIsOn}
         setSelectedCategories={setSelectedCategories}
       />
-      <VStack>
-        <SimpleGrid minChildWidth="200px" spacing="30px" w="80%" p="7">
-          {productList &&
-            productList.data.nodes
-              .slice(0, numberOfProductsToShow)
-              .map((item) => <Product key={item.id} productOnList={item} />)}
-        </SimpleGrid>
-        <Button
-          marginBottom="20px"
-          onClick={() =>
-            setNumberOfProductsToShow((previusState) => previusState + 10)
-          }
-          colorScheme="blue"
-          disabled={
-            numberOfProductsToShow >= (productList?.data.nodes.length || 0)
-          }
-        >
-          Mostrar mais
-        </Button>
-      </VStack>
+      <Center w="100%">
+        <VStack w="100%">
+          <SimpleGrid minChildWidth="200px" spacing="30px" w="80%" p="7">
+            {productList &&
+              productList.data.nodes
+                .slice(0, numberOfProductsToShow)
+                .map((item) => <Product key={item.id} productOnList={item} />)}
+          </SimpleGrid>
+          <Button
+            marginBottom="20px"
+            onClick={() =>
+              setNumberOfProductsToShow((previusState) => previusState + 10)
+            }
+            colorScheme="blue"
+            disabled={
+              numberOfProductsToShow >= (productList?.data.nodes.length || 0)
+            }
+          >
+            Mostrar mais
+          </Button>
+        </VStack>
+      </Center>
     </Layout>
   );
 };

@@ -4,7 +4,7 @@ import {
   Checkbox,
   CheckboxGroup,
   Heading,
-  Stack,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { getCategories } from "../../services/getCategories";
@@ -28,7 +28,7 @@ export const CategoriesBlock = ({
   const handleChangeCategories = () => {
     if (categoriesToSearch?.includes("todos")) {
       setFilterIsOn(false);
-      setSelectedCategories([]);
+      setSelectedCategories(categoriesToSearch);
       return;
     } else {
       setSelectedCategories(categoriesToSearch);
@@ -43,7 +43,9 @@ export const CategoriesBlock = ({
       bg="#87CEFA"
       padding="20px"
       mt="20px"
+      ml="20px"
       color="gray.600"
+      maxH="700px"
     >
       <Heading as="h2" size="md" mb="15px">
         Filtros
@@ -56,14 +58,20 @@ export const CategoriesBlock = ({
             setCategoriesToSearch(formatedEvent);
           }}
         >
-          <Stack spacing={5} direction={"row"}>
+          <SimpleGrid
+            minChildWidth="75px"
+            spacing="15px"
+            w="80%"
+            p="7"
+            column="6"
+          >
             <Checkbox value={"todos"}>Todos</Checkbox>
             {categoriesList?.map((item) => (
               <Checkbox key={item} value={item}>
                 {item}
               </Checkbox>
             ))}
-          </Stack>
+          </SimpleGrid>
         </CheckboxGroup>
         <Button mt="15px" onClick={() => handleChangeCategories()}>
           Filtrar

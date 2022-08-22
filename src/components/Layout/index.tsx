@@ -1,4 +1,4 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 type LayoutProps = {
   children: any;
@@ -7,7 +7,12 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <Box w="100%" h="100vh">
-      <Center flexDirection={["row", "column"]}>{children}</Center>
+      <Flex
+        flexDirection={["column", "column", "column", "row", "row", "row"]}
+        w="100%"
+      >
+        {children}
+      </Flex>
     </Box>
   );
 };
