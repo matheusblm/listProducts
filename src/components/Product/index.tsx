@@ -11,7 +11,7 @@ export const Product = ({ productOnList }: ProductProps) => {
     <Stack
       direction="column"
       spacing="2"
-      minHeight="450px"
+      height="450px"
       justifyContent="space-between"
       padding="10px"
       border="0.5px solid"
@@ -19,6 +19,9 @@ export const Product = ({ productOnList }: ProductProps) => {
       borderRadius="10px"
     >
       <Image
+        width="216px"
+        height="216px"
+        alignSelf="center"
         alt={productOnList.images[0].alt}
         src={productOnList.images[0].asset.url}
       />

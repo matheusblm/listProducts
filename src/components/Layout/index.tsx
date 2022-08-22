@@ -7,7 +7,7 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <Box w="100%" h="100vh">
-      <Center flexDirection="column">{children}</Center>
+      <Center flexDirection={["row", "column"]}>{children}</Center>
     </Box>
   );
 };
